@@ -51,22 +51,40 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <li className="nav-item">
+                  <li className="nav-item dropdown">
                     <NavLink
-                      onClick={() => {
-                        setAuth({
-                          ...auth,
-                          user: null,
-                          token: "",
-                        });
-                        localStorage.removeItem("auth");
-                        toast.success("Logged Out Successfully");
-                      }}
-                      to="/login"
-                      className="nav-link"
+                      className="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
                     >
-                      Logout
+                      {auth?.user?.name}
                     </NavLink>
+                    <ul className="dropdown-menu">
+                      <li>
+                        <NavLink className="dropdown-item" to="/dashboard">
+                          Dashboard
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          onClick={() => {
+                            setAuth({
+                              ...auth,
+                              user: null,
+                              token: "",
+                            });
+                            localStorage.removeItem("auth");
+                            toast.success("Logged Out Successfully");
+                          }}
+                          to="/login"
+                          className="dropdown-item"
+                        >
+                          Logout
+                        </NavLink>
+                      </li>
+                    </ul>
                   </li>
                 </>
               )}
