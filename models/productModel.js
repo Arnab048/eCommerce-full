@@ -1,4 +1,4 @@
-import { mongoose } from "mongoose";
+import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema(
   {
@@ -23,7 +23,7 @@ const productSchema = new mongoose.Schema(
       ref: "Category",
       required: true,
     },
-    quanity: {
+    quantity: {
       type: Number,
       required: true,
     },
